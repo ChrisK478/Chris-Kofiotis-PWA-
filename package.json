@@ -1,21 +1,12 @@
 {
-  "name": "programming_for_the_web_task_source",
+  "name": "heritage-apparel",
   "version": "1.0.0",
-  "description": "A demo Node.JS Progressive Web Application with a SQLite backend.",
-  "main": "index.js",
+  "main": "public/js/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node myPWA/public/js/server.js"
   },
-  "keywords": [],
-  "author": "Ben Jones",
-  "license": "CC-BY-NC-SA-4.0",
   "dependencies": {
-    "body-parser": "^1.20.3",
-    "express": "^4.21.1",
-    "sqlite3": "^5.1.7"
-  },
-  "engines": {
-    "node": ">=18.0.0"
+    "express": "^4.19.2",
+    "sqlite3": "^5.1.6"
   }
 }
