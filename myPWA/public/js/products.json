@@ -1,0 +1,10 @@
+[
+  {
+    "extID": 1,
+    "name": "React",
+    "hyperlink": "https://reactjs.org/",
+    "about": "A JavaScript library for building user interfaces.",
+    "image": "https://reactjs.org/logo-og.png",
+    "language": "JavaScript"
+  }
+]
