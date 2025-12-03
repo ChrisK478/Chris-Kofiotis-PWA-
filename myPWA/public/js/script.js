@@ -9,7 +9,7 @@ function fixPath(path) {
   return path;
 }
 
-// LIVE SEARCH
+// Live search
 async function searchProducts() {
   const query = document.getElementById("searchBar").value;
 
@@ -19,7 +19,7 @@ async function searchProducts() {
   displayProducts(products);
 }
 
-// DISPLAY CARDS
+// Display products in the container
 function displayProducts(products) {
   const container = document.getElementById("productContainer");
   container.innerHTML = "";

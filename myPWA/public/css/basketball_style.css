@@ -114,7 +114,7 @@ nav {
   width: 100%;
   height: 100%;
   object-fit: cover; /* keeps proportions */
-  object-position: center; /* keeps it centered */
+  object-position: center;
   display: block;
 }
 
@@ -133,8 +133,8 @@ nav {
 
 .BasketballDesc {
   position: absolute;
-  top: 50%; /* vertically center */
-  left: 50%; /* horizontally center */
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   color: white;
   font-size: 25px;

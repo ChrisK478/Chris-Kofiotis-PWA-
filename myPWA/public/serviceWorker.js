@@ -11,7 +11,7 @@ const ASSETS = [
   "/icons/206-2069918_menu-icon-png-menu-icon-white-png.png",
 ];
 
-// INSTALL - Cache essential assets
+//Cache essential assets
 self.addEventListener("install", (e) => {
   e.waitUntil(
     caches.open(CACHE).then((cache) => {
@@ -20,11 +20,11 @@ self.addEventListener("install", (e) => {
   );
 });
 
-// FETCH - Cache-first for static assets, network-first for images
+//Cache-first for static assets, network-first for images
 self.addEventListener("fetch", (e) => {
   const req = e.request;
 
-  // Cache ALL images at runtime
+  // Cache all images at runtime
   if (req.destination === "image") {
     e.respondWith(
       caches.match(req).then((cached) => {

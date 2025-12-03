@@ -54,7 +54,7 @@ app.use(express.static("public")); //
 (async () => {
   const PORT = await findPort(3000);
 
-  // Serve STATIC files from root/myPWA/public
+  // Serve static files
   app.use(express.static(path.join(__dirname, "..")));
 
   app.listen(PORT, () => {
