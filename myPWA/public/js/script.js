@@ -24,6 +24,17 @@ function displayProducts(products) {
   const container = document.getElementById("productContainer");
   container.innerHTML = "";
 
+  // If no results → show fallback message
+  if (products.length === 0) {
+    container.innerHTML = `
+      <div class="no-results">
+        <p>No products found. Try another search.</p>
+      </div>
+    `;
+    return;
+  }
+
+  // Otherwise, show product cards
   products.forEach((p) => {
     const link = p.hyperlink?.startsWith("http") ? p.hyperlink : "";
 
@@ -42,6 +53,7 @@ function displayProducts(products) {
     container.appendChild(card);
   });
 }
+
 document.addEventListener("DOMContentLoaded", () => {
   const observer = new IntersectionObserver(
     (entries, obs) => {
@@ -61,11 +73,22 @@ document.addEventListener("DOMContentLoaded", () => {
   searchProducts();
 });
 
-document.getElementById("basketballBtn").addEventListener("click", () => {
-  window.location.href = "basketball.html";
-});
-// AUTORUN ON LOAD
-window.onload = searchProducts;
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("serviceWorker.js")
+      .then(() => console.log("✔ Service Worker Registered"))
+      .catch((err) => console.error("SW Registration Failed:", err));
+  });
+}
+const basketballBtn = document.getElementById("basketballBtn");
+if (basketballBtn) {
+  basketballBtn.addEventListener("click", () => {
+    window.location.href = "basketball.html";
+  });
+}
 
-// LIVE SEARCH (typing = update instantly)
-document.getElementById("searchBar").addEventListener("input", searchProducts);
+const searchBar = document.getElementById("searchBar");
+if (searchBar) {
+  searchBar.addEventListener("input", searchProducts);
+}

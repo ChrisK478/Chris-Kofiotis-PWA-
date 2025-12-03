@@ -5,16 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
     <title>Heritage Apparel</title>
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="manifest.JSON">
   </head>
-  
-  <header class="title">
-    <h1>Heritage Apparel</h1>
-    <p class="subtitle">Sneakers - Basketball Shoes - Apparel</p>
-  </header>
 
 
   <body>
+      
+    <header class="title">
+      <h1>Heritage Apparel</h1>
+      <p class="subtitle">Sneakers - Basketball Shoes - Apparel</p>
+    </header>
+
+    <nav>
+    <ul class="botnav">
+      <li>
+        <img
+          class="menu"
+          src="icons/206-2069918_menu-icon-png-menu-icon-white-png.png"
+          alt="menu"
+          aria-label="Open Navigation Menu"
+        />
+        <ul class="dropdown">
+          <li><a aria-label="About us" href="about.html">About Us</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
       <div>
         <img
           class="Image_1"
@@ -29,7 +45,7 @@
         </h3>
       </div>
 
-  <button id="basketballBtn" class="Basketball fade-in">
+  <button id="basketballBtn" aria-label="Open Basketball Shoes Page" class="Basketball fade-in">
     <div>
       Basketball Shoes
     </div>

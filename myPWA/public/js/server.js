@@ -1,11 +1,11 @@
 const express = require("express");
 const sqlite3 = require("sqlite3").verbose();
 const path = require("path");
-const fs = require("fs");
-const app = express();
-const PORT = 3009;
 
-// Serve static files (HTML, CSS, JS, images)
+const app = express();
+const PORT = 3020;
+
+// Serve EVERYTHING from this folder
 app.use(express.static(path.join(__dirname, "..")));
 
 // Path to DB
