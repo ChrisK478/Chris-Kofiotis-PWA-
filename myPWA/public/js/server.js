@@ -1,12 +1,22 @@
 const express = require("express");
 const sqlite3 = require("sqlite3").verbose();
 const path = require("path");
-
 const app = express();
-const PORT = 3020;
 
-// Serve EVERYTHING from this folder
+//Serve every folder
 app.use(express.static(path.join(__dirname, "..")));
+
+// Try ports until one works
+function findPort(port) {
+  return new Promise((resolve) => {
+    const server = app
+      .listen(port)
+      .once("listening", () => {
+        server.close(() => resolve(port));
+      })
+      .once("error", () => resolve(findPort(port + 1)));
+  });
+}
 
 // Path to DB
 const dbPath = path.join(__dirname, "../../.database/datasource.db");
@@ -17,7 +27,7 @@ const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE, (err) => {
   else console.log("✅ DB connected:", dbPath);
 });
 
-// MAIN API — GET ALL BASKETBALL PRODUCTS
+// Get all basketball products
 app.get("/api/products", (req, res) => {
   const search = `%${(req.query.search || "").trim()}%`;
 
@@ -41,4 +51,13 @@ app.get("/", (req, res) => {
 app.use(express.json());
 app.use(express.static("public")); //
 
-app.listen(PORT, () => console.log(`🚀 Running on http://localhost:${PORT}`));
+(async () => {
+  const PORT = await findPort(3000);
+
+  // Serve STATIC files from root/myPWA/public
+  app.use(express.static(path.join(__dirname, "..")));
+
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
+  });
+})();

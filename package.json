@@ -1,7 +1,6 @@
 {
   "name": "heritage-apparel",
   "version": "1.0.0",
-  "main": "public/js/server.js",
   "scripts": {
     "start": "node myPWA/public/js/server.js"
   },
